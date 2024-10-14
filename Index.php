@@ -71,11 +71,12 @@ if(isset($_POST['submit'])){
                             if($pass != $password){
                                 echo"
                                 <div class='alert alert-danger' role='alert'>
-                                  We could not verify your Password! kindly check and try again!
+                                    We could not verify your Password! kindly check and try again!
                                 </div>
                                 ";
                             }else{
                                 header('location: dash.php?uid='.$user_id.'');
+                                session_start();
                                 $_SESSION['user'] = $email;
                             }
 

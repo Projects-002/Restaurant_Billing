@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comrade Flavour</title>
-    <link rel="stylesheet" href="Assets/Css/style.css">
-    <link rel="stylesheet" href="Assets/Css/analytics.css">
+    <link rel="stylesheet" href="../Assets/Css/style.css">
+    <link rel="stylesheet" href="../Assets/Css/analytics.css">
     <!-- material icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" />
     
@@ -300,7 +300,7 @@
                   
       </main>                                     
   </div>
-      <script src="Assets/Js/script.js"></script> 
+      <script src="../Assets/Js/script.js"></script> 
   </body>
 </html>
 
