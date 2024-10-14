@@ -67,15 +67,15 @@ CREATE TABLE `users` (
   `Phone` varchar(20) NOT NULL,
   `Pass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Reg_Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`SN`, `First_Name`, `Last_Name`, `Reg_No`, `Course`, `Email`, `Phone`, `Pass`, `Reg_Date`) VALUES
-(1, 'Ismael', 'Bett', 'Dse-02-666/2023', 'Software engeering', 'xyz.termux@gmail.com', '0727405667', '1234', '2024-10-14 00:30:20'),
-(7, 'Ismael', 'Bett', 'Dse-02-667/2023', 'Software engeering', 'bett@gmail.com', '0727405666', '12345', '2024-10-14 01:12:18');
+INSERT INTO `users` (`First_Name`, `Last_Name`, `Reg_No`, `Course`, `Email`, `Phone`, `Pass`) VALUES
+('Ismael', 'Bett', 'Dse-02-666/2023', 'Software engeering', 'xyz.termux@gmail.com', '0727405667', '1234'),
+('Ismael', 'Bett', 'Dse-02-667/2023', 'Software engeering', 'bett@gmail.com', '0727405666', '12345');
 
 --
 -- Indexes for dumped tables
