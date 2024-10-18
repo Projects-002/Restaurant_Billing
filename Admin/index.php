@@ -1,311 +1,125 @@
-<?php
 
-include('../Database/db.php');
 
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comrade Flavour</title>
-    <link rel="stylesheet" href="../Assets/Css/style.css">
-    <link rel="stylesheet" href="../Assets/Css/analytics.css">
-    <!-- material icon -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" />
-    
+    <title>Responsive Login Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction:column;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #007bff;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">       
-              <!-- Start of Top -->
-                <div class="top top-main">                      
-                            <button id="menu-btn">
-                            <!-- <span class="material-icons-sharp">menu</span> -->
-                            </button>
-
-                            <div class="top-hero">
-                              <div class="logo logo-image">
-                              <!-- The logo is here -->
-                              </div>
-                              <h1>Zenith Flavour</h1>
-                          </div>
-
-                       <!-- Top right -->
-                       <div class="top-right">
-                            <!-- Theme toggler -->
-                            <div class="theme-toggler">
-                                  <span class="material-icons-sharp active">light_mode</span>
-                                  <span class="material-icons-sharp">dark_mode</span>                    
-                            </div>
-
-                            <!-- Profile -->
-                            <div class="profile">
-                                <div class="info">
-
-                                  <p>Hello, 
-                            <!-- <?php
-
-                          $sql = "SELECT * FROM admins";
-                          $result = mysqli_query($conn, $sql);
-                          $admin = mysqli_fetch_assoc($result);
-                          $admin_name = $admin["First_Name"];
-
-                          echo '
-                          
-                          <b>'.$admin_name.'</b>
-                          
-                          ';
-                        ?>                                  -->
-                                </p>
-                                  <small class="text-muted">Steven</small>
-                                </div>
-                                <div class="profile-photo">
-                                  <img src="Assets/Img/steve.jpg" alt="">
-                               </div>
-                           </div> 
-
-                       </div>
-              </div>
-              <!-- End of Top -->
-
-              <!-- Star of Aside -->
-              <aside>
-
-                     <div class="top">
-                        <div class="close" id="close-btn">
-                            <!-- <span class="material-icons-sharp">close</span> -->
-                        </div>   
-                      </div>
-
-                      <div class="sidebar">
-            
-                          <a href="users.php" class="active">
-                            <span class="material-icons-sharp">people_alt</span>
-                            <h3>Users</h3>
-                          </a>
-
-                          <a href="products.php">
-                            <span class="material-icons-sharp">storefront</span>
-                            <h3>Staff</h3>
-                          </a>
-
-                          <a href="#">
-                            <span class="material-icons-sharp">mail_outline</span>
-                            <h3>Messages</h3>
-                            <span class="message-count">26</span>
-                          </a>
-
-                          <a href="#">
-                            <span class="material-icons-sharp">tips_and_updates</span>
-                            <h3>Products</h3>
-                          </a>
-
-                          <a href="votes.php">
-                            <span class="material-icons-sharp">shopping_cart_checkout</span>
-                            <h3>Sales</h3>
-                          </a>
 
 
-                          <a href="#">
-                            <span class="material-icons-sharp">person_search</span>
-                            <h3>Search Users</h3>
-                          </a>
+<!-- PHP START -->
+<?php
 
-                          <!-- <a href="#">
-                            <span class="material-icons-sharp">settings</span>
-                            <h3>Settings</h3>
-                          </a>  -->
-                          
-                          <a href="users_operation/add.php">
-                            <span class="material-icons-sharp">add</span>
-                            <h3>Add User</h3>
-                          </a>
-                        
-                          <a class="last" href="settings/logout.php" target="_self">
-                            <span class="material-icons-sharp">logout</span>
-                            <h3>Logout</h3>
-                          </a>
-                      </div>
-              </aside>
-              <!-- End of Aside -->
+include ('../database/db.php');
 
-      <main>
+if(isset($_POST['submit'])){
 
-      <!-- Display Aside -->
-      <div class="show-aside-el">
-          <span class="material-icons-sharp" id="close-aside">close</span>
-          <span class="material-icons-sharp" id="display-aside">grid_view</span>  
-      </div>
-      <!-- Display Aside -->
-
-      <div class="head-sec">
-        <h1>Business analytics</h1>
-      </div>
-
- 
-      <div class="insights"> 
-                 <div class="sales">
-                  <span class="material-icons-sharp">analytics</span>
-                  <div class="middle">
-                     <div class="left">
-                            <h3>Total Users</h3>
-
-                    <!-- Total users start  -->
-                                <!-- <?php
-                                $sql = "SELECT * FROM users";
-                                $result = mysqli_query($conn, $sql);
-                                $total_users = mysqli_num_rows($result);
-
-                                echo'
-                                        <h1>'.$total_users.'</h1>
-                                
-                                  ';
-                                ?> -->
-                    <!-- Total users end  -->  
-
-                     </div>
-                     <div class="progress">
-                       <svg>
-                           <circle cx='38' cy='36'  r='36'></circle>
-                       </svg>
-                       <div class="number">
-
-                      <!-- User Percentage Calculation start -->
-                                  <!-- <?php
-                                      $sql = "SELECT * FROM users";
-                                      $result = mysqli_query($conn, $sql);
-                                      $total_users = mysqli_num_rows($result);
-                                  
-                                      $registered = 1000;
-
-                                      $Total_users_percentage = ceil((($total_users/$registered) * 100)) ;
-
-
-                                      echo'
-                                              <p>'.$Total_users_percentage.'%</p>
-                                      
-                                        ';
-                                ?> -->
-                        <!-- User Percentage Calculation end -->
-      
-                       </div>
-                     </div>
-                  </div>
-                  <small class="text-muted">last 24hrs</small>
-                </div>
-
-                <!-- END OF Users -->
-
-               <div class="income">
-                  <span class="material-icons-sharp">bar_chart</span>
-                  <div class="middle">
-                     <div class="left">
-                      <h3>Total Sales</h3>
-
-                    <!--Total products start-->
-                    <!-- <?php
-                        $sql = "SELECT * FROM products";
-                        $result = mysqli_query($conn, $sql);
-                        $total_Products = mysqli_num_rows($result);
                     
 
-                        echo'
-                                <h1>'.$total_Products.'</h1>
-                        
-                          ';
-                        ?> -->
-                    <!-- Total Candidates end -->
+                        $email = $_POST['email'];
+                        $pass = $_POST['pass'];
 
-                     </div>
-                     <div class="progress">
-                       <svg>
-                           <circle cx='38' cy='36' r='36'></circle>
-                       </svg>
-                       <div class="number">
+// Code with HOPE DEVELOPERS
 
-                        <!--Candidate Percentage Calculation start -->
-                              <!-- <?php
-                                  $sql = "SELECT * FROM products";
-                                $total_products = mysqli_num_rows($result);
-                              
-                                  $min_stock = 50;
 
-                                  $Total_products_percentage = ceil((($total_products/$min_stock) * 100)) ;
+                        $sql = "SELECT * FROM admins where Email = '$email'";
+                        $result =  mysqli_query($conn, $sql);
 
-                                  echo'
-                                          <p>'.$Total_products_percentage.'%</p>
-                                  
-                                    ';
-                            ?>                                  $result = mysqli_query($conn, $sql);
-   -->
-                        <!-- Candidate Percentage Calculation end -->
 
-                       </div>
-                     </div>
-                  </div>
-                  <small class="text-muted">last 24hrs</small>
-                </div>
+                        $row = mysqli_num_rows($result);
 
-                <!-- END OF ACADEMICS -->
+                        if($row>0){
 
-                <div class="expenses">
-                  <span class="material-icons-sharp">stacked_line_chart</span>
-                  <div class="middle">
-                     <div class="left">
-                      <h3>Total Debt</h3>
-                      
-            <!-- <?php
-              $sql = "SELECT * FROM sales";
-              $result = mysqli_query($conn, $sql);
-              $total_sales = mysqli_num_rows($result);
-           
+                            $user = mysqli_fetch_assoc($result);
+                            $password = $user['Pass'];
+                            $user_id = $user['SN'];
 
-               echo'
-                       <h1>'.$total_sales.'</h1>
-               
-                 ';
-               ?> -->
-                     </div>
-                     <div class="progress">
-                       <svg>
-                           <circle cx='38' cy='36' r='36'></circle>
-                       </svg>
-                       <div class="number">
+                            if($pass != $password){
+                                echo"
+                                <div class='alert alert-danger' role='alert'>
+                                    We could not verify your Password! kindly check and try again!
+                                </div>
+                                ";
+                            }else{
+                                header('location: dashboard.php?uid='.$user_id.'');
+                                session_start();
+                                $_SESSION['user'] = $email;
+                            }
 
-                    <!--Candidate Percentage Calculation start -->
-                         <!-- <?php
-                                  $sql1 = "SELECT * FROM sales";
-                                  $sql2 = "SELECT * FROM cart";
+                        }else{
+                            echo"
+                               <div class='alert alert-danger' role='alert'>
+                                   Incorrect Email Address! try again
+                               </div></br>
+                            ";
 
-                                  $result1 = mysqli_query($conn, $sql1);
-                                  $result2 = mysqli_query($conn, $sql2);
+                        }
 
-                                  $total_sales = mysqli_num_rows($result1);
-                                  $target = 3000;
 
-                                  $Total_sales_percentage = ceil((($total_sales/$target) * 100)) ;
+}
+ 
+?>
 
-                                  echo'
-                                          <p>'.$Total_sales_percentage.'%</p>
-                                  
-                                    ';
-                            ?> -->
-                    <!-- Candidate Percentage Calculation end -->
-                       </div>
-                     </div>
-                   </div>
-                  <small class="text-muted">last 24hrs</small>
-                </div>
-                <!-- -------- End of Expenses-------- -->
-            </div>   
-            
-       
-     
-                  
-      </main>                                     
-  </div>
-      <script src="../Assets/Js/script.js"></script> 
-  </body>
+<!-- PHP END -->
+
+<div class="login-container">
+    <h2 class="text-center">Admin</h2>
+  <p>Login as <a href="../index.php">User</a></p>  
+    <form action='index.php' method='POST'>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name='email' id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name='pass' id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe">
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+        </div>
+        <button type="submit" name='submit' class="btn btn-primary">Login</button>
+    </form>
+
+    <p>Don't have account yet? <a href="register.php">Register</a></p>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
 </html>
-
-<!-- 1:23:28 -->
