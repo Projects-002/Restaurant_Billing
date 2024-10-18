@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2024 at 10:35 PM
+-- Generation Time: Oct 18, 2024 at 10:52 PM
 -- Server version: 8.0.39
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `restaurant_billing`
 --
+CREATE DATABASE IF NOT EXISTS `restaurant_billing` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `restaurant_billing`;
 
 -- --------------------------------------------------------
 
@@ -36,6 +38,13 @@ CREATE TABLE `admins` (
   `Pass` varchar(255) DEFAULT NULL,
   `Reg_Date` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`SN`, `First_Name`, `Last_Name`, `Email`, `Phone`, `Pass`, `Reg_Date`) VALUES
+(1, 'Ismael', 'Bett', 'kipkoech@gmail.com', '0727405667', '1234', '2024-10-18 09:48:59');
 
 -- --------------------------------------------------------
 
@@ -54,6 +63,21 @@ CREATE TABLE `products` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sales`
+--
+
+CREATE TABLE `sales` (
+  `SN` int NOT NULL,
+  `Username` varchar(100) NOT NULL,
+  `P_Name` varchar(200) NOT NULL,
+  `Price` int NOT NULL,
+  `Status` varchar(255) NOT NULL,
+  `Sales_Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -67,15 +91,15 @@ CREATE TABLE `users` (
   `Phone` varchar(20) NOT NULL,
   `Pass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Reg_Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`First_Name`, `Last_Name`, `Reg_No`, `Course`, `Email`, `Phone`, `Pass`) VALUES
-('Ismael', 'Bett', 'Dse-02-666/2023', 'Software engeering', 'xyz.termux@gmail.com', '0727405667', '1234'),
-('Ismael', 'Bett', 'Dse-02-667/2023', 'Software engeering', 'bett@gmail.com', '0727405666', '12345');
+INSERT INTO `users` (`SN`, `First_Name`, `Last_Name`, `Reg_No`, `Course`, `Email`, `Phone`, `Pass`, `Reg_Date`) VALUES
+(1, 'Ismael', 'Bett', 'Dse-02-666/2023', 'Software engeering', 'xyz.termux@gmail.com', '0727405667', '1234', '2024-10-14 00:30:20'),
+(7, 'Ismael', 'Bett', 'Dse-02-667/2023', 'Software engeering', 'bett@gmail.com', '0727405666', '12345', '2024-10-14 01:12:18');
 
 --
 -- Indexes for dumped tables
@@ -97,6 +121,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`SN`);
 
 --
+-- Indexes for table `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`SN`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -114,12 +144,18 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `SN` int NOT NULL AUTO_INCREMENT;
+  MODIFY `SN` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
+  MODIFY `SN` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sales`
+--
+ALTER TABLE `sales`
   MODIFY `SN` int NOT NULL AUTO_INCREMENT;
 
 --
