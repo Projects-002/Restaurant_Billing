@@ -32,7 +32,7 @@ include('databases/connect.php');
                               <div class="logo logo-image">
                               <!-- The logo is here -->
                               </div>
-                              <h1>Zenith Stores</h1>
+                              <h1>Steve Flavour Restaurant</h1>
                           </div>
 
                        <!-- Top right -->
@@ -65,7 +65,7 @@ include('databases/connect.php');
                                   <small class="text-muted">Admin</small>
                                 </div>
                                 <div class="profile-photo">
-                                  <img src="Assets/images/cand3.png" alt="">
+                                  <img src="Assets/images/steve.jpg" alt="">
                                </div>
                            </div> 
 
