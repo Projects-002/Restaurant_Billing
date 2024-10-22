@@ -1,7 +1,7 @@
  <?php
 
 session_start();
-if(!isset($_SESSION['admin'])){
+if(!isset($_SESSION['user'])){
   header('location: index.php');
 }
 
@@ -167,11 +167,10 @@ include('databases/connect.php');
                               <th>SN</th>
                               <th>First_Name</th>
                               <th>Last_Name</th>
-                              <th>Phone</th>                             
+                              <th>Reg_No</th>                             
+                              <th>Course</th>
                               <th>Email</th>
-                              <th>Street_Address</th>
-                              <th>Country</th>
-                              <th>Postal</th>
+                              <th>Phone</th>
                               <th>Pass</th>
                               <th>Reg_Date</th>
                               <th>Operation</th>
@@ -179,6 +178,8 @@ include('databases/connect.php');
                           </thead>
                    <tbody>
 
+
+                  
 
                           <?php
 
@@ -190,11 +191,10 @@ include('databases/connect.php');
                                     $SN = $row['SN'];
                                     $F_name = $row['First_Name'];
                                     $L_name = $row['Last_Name'];
-                                    $Phone = $row['Phone'];
+                                    $Reg_No = $row['Reg_No'];
+                                    $Course = $row['Course'];
                                     $Email = $row['Email'];
-                                    $saddress = $row['Street_Address'];
-                                    $country = $row['Country'];
-                                    $posta = $row['Postal'];
+                                    $Phone = $row['Phone'];
                                     $U_pass = $row['Pass'];
                                     $Reg_date = $row['Reg_Date'];
       
@@ -204,11 +204,10 @@ include('databases/connect.php');
                                             <td>'.$SN.'</td>
                                             <td>'.$F_name.'</td>
                                             <td>'.$L_name.'</td>
-                                            <td>'.$Phone.'</td>
+                                            <td>'.$Reg_No.'</td>
+                                            <td>'.$Course.'</td>
                                             <td>'.$Email.'</td>
-                                            <td>'.$saddress.'</td>
-                                            <td>'.$country.'</td>
-                                            <td>'.$posta.'</td>
+                                            <td>'.$Phone.'</td>
                                             <td>'.$U_pass.'</td>
                                             <td class="reg-d">'.$Reg_date.'</td>  
                                             <td class="operations">

@@ -290,10 +290,9 @@ include('databases/connect.php');
                     <!--Candidate Percentage Calculation start -->
                          <?php
                                   $sql1 = "SELECT * FROM sales";
-                                  $sql2 = "SELECT * FROM cart";
-
+                             
                                   $result1 = mysqli_query($conn, $sql1);
-                                  $result2 = mysqli_query($conn, $sql2);
+  
 
                                   $total_sales = mysqli_num_rows($result1);
                                   $target = 3000;
