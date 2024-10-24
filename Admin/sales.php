@@ -1,9 +1,7 @@
 <?php
 
 
-
 include('databases/connect.php');
-
 
 
 // Insert form data into sales table
