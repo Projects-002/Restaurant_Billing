@@ -12,7 +12,7 @@ include('databases/connect.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zenith Stores Admin Panel</title>
+    <title>Steve Flavour Restaurant</title>
     <link rel="stylesheet" href="Assets/Css/user.css">
     <!-- material icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" />
@@ -29,7 +29,7 @@ include('databases/connect.php');
                             <div class="top-hero">
                               <!-- <div class="logo">
                               </div> -->
-                              <h1>Zenith Stores</h1>
+                              <h1>Steve Flavour Restaurant</h1>
                           </div>
 
                        <!-- Top right -->
@@ -43,11 +43,11 @@ include('databases/connect.php');
                             <!-- Profile -->
                             <div class="profile">
                                 <div class="info">
-                                  <p>Hello, <b>Hope</b></p>
+                                  <p>Hello, <b>Stephine</b></p>
                                   <small class="text-muted">Admin</small>
                                 </div>
                                 <div class="profile-photo">
-                                  <img src="Assets/images/cand3.png" alt="">
+                                  <img src="Assets/images/steve.jpg" alt="">
                                </div>
                            </div> 
 
@@ -55,80 +55,76 @@ include('databases/connect.php');
               </div>
               <!-- End of Top -->
 
-              <!-- Star of Aside -->
-              <aside>
-                     <div class="top">
-                        <div class="close" id="close-btn">
-                            <span class="material-icons-sharp">close</span>
-                        </div>   
-                      </div>
+        <!-- Start of Aside -->
+        <aside>
 
-                      <div class="sidebar">
-                          <a href="#">
-                            <span class="material-icons-sharp">grid_view</span>
-                            <h3>Dashboard</h3>
-                          </a>
+              <div class="top">
+                <div class="close" id="close-btn">
+                    <!-- <span class="material-icons-sharp">close</span> -->
+                </div>   
+              </div>
 
-                          <a href="#" class="active">
-                            <span class="material-icons-sharp">person_outline</span>
-                            <h3>Participants</h3>
-                          </a>
+              <div class="sidebar">
 
-                          <a href="Html/beneficiaries.html">
-                            <span class="material-icons-sharp">how_to_vote</span>
-                            <h3>Voters</h3>
-                          </a>
+                  <a href="users.php" class="active">
+                    <span class="material-icons-sharp">people_alt</span>
+                    <h3>Users</h3>
+                  </a>
 
-                          <a href="#">
-                            <span class="material-icons-sharp">mail_outline</span>
-                            <h3>Messages</h3>
-                            <span class="message-count">26</span>
-                          </a>
+                  <a href="products.php">
+                    <span class="material-icons-sharp">storefront</span>
+                    <h3>Products</h3>
+                  </a>
 
-                          <a href="#">
-                            <span class="material-icons-sharp">tips_and_updates</span>
-                            <h3>Innovations</h3>
-                          </a>
+                  <a href="#">
+                    <span class="material-icons-sharp">mail_outline</span>
+                    <h3>Messages</h3>
+                    <span class="message-count">26</span>
+                  </a>
 
+                  <a href="#">
+                    <span class="material-icons-sharp">analytics</span>
+                    <h3>analytics</h3>
+                  </a>
 
-                          <a href="#">
-                            <span class="material-icons-sharp">insights</span>
-                            <h3>Academics</h3>
-                          </a>
+                  <a href="votes.php">
+                    <span class="material-icons-sharp">shopping_cart_checkout</span>
+                    <h3>Orders</h3>
+                  </a>
 
-                          <a href="#">
-                            <span class="material-icons-sharp">video_chat</span>
-                            <h3>Projects</h3>
-                          </a>
+                  <a href="#">
+                    <span class="material-icons-sharp">local_shipping</span>
+                    <h3>Sales</h3>
+                  </a>
 
-                          <a href="#">
-                            <span class="material-icons-sharp">edit_calendar</span>
-                            <h3>Documents</h3>
-                          </a>
+                  <!-- <a href="#">
+                    <span class="material-icons-sharp">edit_calendar</span>
+                    <h3>Documents</h3>
+                  </a> -->
 
 
-                          <a href="#">
-                            <span class="material-icons-sharp">person_search</span>
-                            <h3>Search Users</h3>
-                          </a>
+                  <a href="#">
+                    <span class="material-icons-sharp">person_search</span>
+                    <h3>Search Users</h3>
+                  </a>
 
-                          <a href="#">
-                            <span class="material-icons-sharp">settings</span>
-                            <h3>Settings</h3>
-                          </a> 
-                          
-                          <!-- <a href="#">
-                            <span class="material-icons-sharp">add</span>
-                            <h3>Add Participant</h3>
-                          </a> -->
-                        
-                          <a class="last" href="login.html" target="_self">
-                            <span class="material-icons-sharp">logout</span>
-                            <h3>Logout</h3>
-                          </a>
-                      </div>
-              </aside>
-              <!-- End of Aside -->
+                  <a href="#">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Settings</h3>
+                  </a> 
+                  
+                  <a href="users_operation/add.php">
+                    <span class="material-icons-sharp">add</span>
+                    <h3>Add User</h3>
+                  </a>
+                
+                  <a class="last" href="settings/logout.php" target="_self">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Logout</h3>
+                  </a>
+              </div>
+        </aside>
+   <!-- End of Aside -->
 
     <main>
 

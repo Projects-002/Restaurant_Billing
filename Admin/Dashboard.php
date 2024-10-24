@@ -73,7 +73,7 @@ include('databases/connect.php');
               </div>
               <!-- End of Top -->
 
-              <!-- Star of Aside -->
+              <!-- Start of Aside -->
               <aside>
 
                      <div class="top">
