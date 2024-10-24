@@ -110,7 +110,7 @@ include('databases/connect.php');
                             <h3>Orders</h3>
                           </a>
 
-                          <a href="#">
+                          <a href="sales.php">
                             <span class="material-icons-sharp">local_shipping</span>
                             <h3>Sales</h3>
                           </a>

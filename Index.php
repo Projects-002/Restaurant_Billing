@@ -69,7 +69,7 @@ if(isset($_POST['submit'])){
                             $user_id = $user['SN'];
 
                             if($pass != $password){
-                                echo"
+                                echo"    
                                 <div class='alert alert-danger' role='alert'>
                                     We could not verify your Password! kindly check and try again!
                                 </div>
