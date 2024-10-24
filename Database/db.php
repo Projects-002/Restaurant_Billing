@@ -3,7 +3,7 @@
 // Database configuration
         $db_server = 'localhost';
         $db_user = 'root';
-        $db_pass = '';
+        $db_pass = '22092209';
         $db_name = 'restaurant_billing';
         $conn = '';
 

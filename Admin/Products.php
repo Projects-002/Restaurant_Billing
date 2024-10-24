@@ -149,8 +149,7 @@ include('databases/connect.php');
                               <th>SN</th>
                               <th>Product_Name</th>
                               <th>Category</th>
-                              <th>Price</th>
-                              <th>Stock-Size</th>                             
+                              <th>Price</th>                           
                               <th>Product Image</th>
                               <th>Operation</th>    
                           </thead>
@@ -164,7 +163,6 @@ include('databases/connect.php');
                                     $P_name = $row['P_Name'];
                                     $Category = $row['Category'];
                                     $Price = $row['Price'];
-                                    $Stock = $row['Stock'];
                                     $P_Image = $row['P_Image'];
                                   echo '
                                         <tr>
@@ -172,7 +170,6 @@ include('databases/connect.php');
                                             <td>'.$P_name.'</td>
                                             <td>'.$Category.'</td>
                                             <td>$ '.$Price.'</td>
-                                            <td>'.$Stock.'</td>
                                             <td><img class="display-img" src="'.$P_Image.'"></td>
                                             <td class="operations">
                                                 <a href="product_operation/update.php? updateid='.$SN.'"><button class="update">Update</button></a>

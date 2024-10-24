@@ -16,7 +16,6 @@ include('../databases/connect.php');
           $P_name = $row['P_Name'];
           $Category = $row['Category'];
           $Price = $row['Price'];
-          $Stock = $row['Stock'];
           $P_Image = $row['P_Image'];
 
 ?>
