@@ -5,12 +5,9 @@ if(!isset($_SESSION['user'])){
     header('location: index.php');
 }
 
-
 include('database/db.php');
 
-
 $user = $_GET['uid'];
-
 
 
 // Select from sales
@@ -32,15 +29,7 @@ $sales = "SELECT * FROM sales where Reg_No = '$reg'";
 $feed = mysqli_query($conn, $sales);
 $rows = mysqli_num_rows($feed);
 
-
-
-// Assign table column to individual variables
-
-  
-    
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,12 +73,42 @@ $rows = mysqli_num_rows($feed);
     </div>
 </section>
 
+<style>
+    .hero{
+        position: relative;
+        background:url('https://i.postimg.cc/GpFNmcn5/gettyimages-1457889029-612x612.jpg');
+     }
+
+     .hero .container{
+        position: absolute;
+        z-index: 3;
+        top: 1rem;
+        left: 0;
+        bottom:1rem;
+     }
+
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Change the color and opacity as needed */
+        }
+  
+
+
+
+</style>
+
 <!-- Meal and Billing Section -->
 <section class="section" id="meals">
     <div class="container">
-        <h2 class="text-center mb-4">Meals Taken (Paid/Unpaid)</h2>
+        <h2 class="text-center mb-4">My Transactions</h2>
         <table class="table table-bordered">
-            <thead class="table-dark">
+            <thead class="table-warning">
                 <tr>
                     <th>Meal Name</th>
                     <th>Date Taken</th>
@@ -100,9 +119,7 @@ $rows = mysqli_num_rows($feed);
             <tbody>
                 <!--  Meals Taken -->
                 <?php
-
-
-                     
+     
                  while($data = mysqli_fetch_assoc($feed)){
 
                     $meal_name = $data['P_Name'];
@@ -111,9 +128,7 @@ $rows = mysqli_num_rows($feed);
                     $amount = $data['Price'];
 
 
-
                     if($Status == 'unpaid'){
-
                                
                      echo'
                             <tr>
@@ -137,9 +152,7 @@ $rows = mysqli_num_rows($feed);
 
                          ';
 
-
                     }
-             
 
                      }
                  ?>
@@ -147,6 +160,68 @@ $rows = mysqli_num_rows($feed);
         </table>
     </div>
 </section>
+
+
+<!-- Bills Section -->
+<section class="section" id="bills">
+    <div class="container">
+        <h2 class="text-center mb-4">Outstanding Bills</h2>
+        <table class="table table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th>Meal Name</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+        <tbody id="outstandingBills">
+            <?php
+                $bill = "SELECT * FROM sales where Reg_No = '$reg'";
+                $back = mysqli_query($conn, $bill);
+                while($info = mysqli_fetch_assoc($back)){
+                 
+                $name = $info['P_Name'];
+                $p_price = $info['Price'];
+                $p_status = $info['P_Status'];
+                $date = $info['Sales_Date'];
+
+
+                if($p_status == 'unpaid'){
+                      echo'
+                        <tr>
+                            <td>'.$name.'</td>
+                            <td>'.$date.'</td>
+                            <td>Ksh '.$p_price.'</td>
+                            <td><span class="badge bg-danger">'.$p_status.'</span></td>
+                        </tr>
+                       ';
+                   }
+
+                 }
+
+                $total_debt = "SELECT SUM(Price) AS totalUnpaid FROM Sales Where P_Status = 'Unpaid'";
+                $unpaid = mysqli_query($conn, $total_debt);
+                $debt_data = mysqli_fetch_assoc($unpaid);
+
+                $total_bill = $debt_data['totalUnpaid'];
+
+
+                echo' 
+                    <tr>
+                    <td></td>
+                    <td></td>
+                    <td><b>Total Debt:</b></td>
+                    <td>'.$total_bill.'</td>
+                    </tr>
+                
+                ';
+            ?>
+          </tbody>
+        </table>
+    </div>
+</section>
+
 
 <!-- Payment Section -->
 <section class="section bg-light" id="payment">
@@ -172,37 +247,6 @@ $rows = mysqli_num_rows($feed);
             </div>
             <button type="submit" class="btn btn-primary">Submit Payment</button>
         </form>
-    </div>
-</section>
-
-<!-- Bills Section -->
-<section class="section" id="bills">
-    <div class="container">
-        <h2 class="text-center mb-4">Outstanding Bills</h2>
-        <table class="table table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>Meal Name</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="outstandingBills">
-                <tr>
-                    <td>Pasta Alfredo</td>
-                    <td>2024-10-09</td>
-                    <td>$10</td>
-                    <td><span class="badge bg-danger">Unpaid</span></td>
-                </tr>
-                <tr>
-                    <td>Vegetable Salad</td>
-                    <td>2024-10-07</td>
-                    <td>$8</td>
-                    <td><span class="badge bg-danger">Unpaid</span></td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </section>
 
