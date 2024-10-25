@@ -6,17 +6,40 @@ if(!isset($_SESSION['user'])){
 }
 
 
+include('database/db.php');
+
+
+$user = $_GET['uid'];
+
 
 
 // Select from sales
-      
+$sql = "SELECT * FROM users where SN = '$user'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$reg = $row['Reg_No'];
+
+// SN
+//  Reg_No
+//  P_Name
+//  Category
+//  Price
+//  P_Status
+//  Sales_Date
+
+// Get sales Data
+$sales = "SELECT * FROM sales where Reg_No = '$reg'";
+$feed = mysqli_query($conn, $sales);
+$rows = mysqli_num_rows($feed);
+
+
+
+// Assign table column to individual variables
+
+  
     
 
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,31 +98,51 @@ if(!isset($_SESSION['user'])){
                 </tr>
             </thead>
             <tbody>
-                <!-- Sample Meals Taken -->
-                <tr>
-                    <td>Grilled Chicken</td>
-                    <td>2024-10-10</td>
-                    <td><span class="badge bg-success">Paid</span></td>
-                    <td>$15</td>
-                </tr>
-                <tr>
-                    <td>Pasta Alfredo</td>
-                    <td>2024-10-09</td>
-                    <td><span class="badge bg-danger">Unpaid</span></td>
-                    <td>$10</td>
-                </tr>
-                <tr>
-                    <td>Beef Burger</td>
-                    <td>2024-10-08</td>
-                    <td><span class="badge bg-success">Paid</span></td>
-                    <td>$12</td>
-                </tr>
-                <tr>
-                    <td>Vegetable Salad</td>
-                    <td>2024-10-07</td>
-                    <td><span class="badge bg-danger">Unpaid</span></td>
-                    <td>$8</td>
-                </tr>
+                <!--  Meals Taken -->
+                <?php
+
+
+                     
+                 while($data = mysqli_fetch_assoc($feed)){
+
+                    $meal_name = $data['P_Name'];
+                    $date_taken = $data['Sales_Date'];
+                    $Status = $data['P_Status'];
+                    $amount = $data['Price'];
+
+
+
+                    if($Status == 'unpaid'){
+
+                               
+                     echo'
+                            <tr>
+                                <td>'.$meal_name.'</td>
+                                <td>'.$date_taken.'</td>
+                                <td><span class="badge bg-danger">'.$Status.'</span></td>
+                                <td>Ksh '.$amount.'</td>
+                           </tr>
+ 
+                             ';
+                    }elseif($Status == 'paid'){
+
+
+                        echo'
+                        <tr>
+                            <td>'.$meal_name.'</td>
+                            <td>'.$date_taken.'</td>
+                            <td><span class="badge bg-success">'.$Status.'</span></td>
+                            <td>Ksh '.$amount.'</td>
+                          </tr>
+
+                         ';
+
+
+                    }
+             
+
+                     }
+                 ?>
             </tbody>
         </table>
     </div>
