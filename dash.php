@@ -204,28 +204,12 @@ $rows = mysqli_num_rows($feed);
 
                  }
 
-                $total_debt = "SELECT  SUM(Price) AS totalUnpaid FROM Sales Where Reg_No = '$reg'";
+                $total_debt = "SELECT  SUM(Price) AS totalUnpaid FROM Sales Where Reg_No = '$reg' and P_Status = 'unpaid'";
                 $unpaid = mysqli_query($conn, $total_debt);
                 $debt_data = mysqli_fetch_assoc($unpaid);
-
-
-                $bill_1 = "SELECT * FROM sales where Reg_No = '$reg'";
-                $back_1 = mysqli_query($conn, $bill);
-                $info_1 = mysqli_fetch_assoc($back_1);
-                $state = $info_1['P_Status'];
                 
-                 if($state == null){
+    
 
-                        echo' 
-                            <tr>
-                            <td></td>
-                            <td></td>
-                            <td><b>Total Debt:</b></td>
-                            <td>00.0</td>
-                            </tr>
-                        ';
-
-                 }elseif($state == 'unpaid'){
 
                     $total_bill = $debt_data['totalUnpaid'];
                 
@@ -237,7 +221,7 @@ $rows = mysqli_num_rows($feed);
                     <td>'.$total_bill.'</td>
                     </tr>
                 ';
-              }
+
                 
             ?>
           </tbody>
