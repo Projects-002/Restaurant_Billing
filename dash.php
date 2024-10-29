@@ -67,6 +67,36 @@ $rows = mysqli_num_rows($feed);
     </div>
 </section>
 
+<?php
+
+
+
+
+//   $get_debt = "SELECT DATEDIFF('2024-11-06 09:34:21', Sales_Date) as Due from Sales Where Reg_No = '$reg'";
+  $get_debt = "SELECT DATEDIFF(now(), Sales_Date) as Due from Sales Where Reg_No = '$reg'";
+  $feed_back = mysqli_query($conn,$get_debt);
+  $row_1 = mysqli_fetch_assoc($feed_back);
+  $bal = $row_1['Due'];
+  
+  $get_status = "SELECT * FROM sales where Reg_No = '$reg'";
+  $q_result = mysqli_query($conn,$get_status);
+  $row_2 = mysqli_fetch_assoc($q_result);
+
+  $p_state = $row_2['P_Status'];
+
+  if($p_state = 'unpaid' && $bal >3){
+    
+    echo'
+    <div class="alert alert-danger"   role="alert">
+       <p>Some of your Meals are Due kindly repay them</p>
+  </div>
+  ';
+
+
+  }
+
+?>
+
 
 <div class="alert alert-success"   role="alert">
   <div class="container">
