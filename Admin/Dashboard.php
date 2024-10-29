@@ -131,7 +131,7 @@ include('databases/connect.php');
                             <h3>Settings</h3>
                           </a> 
                           
-                          <a href="users_operation/add.php">
+                          <a href="users_operation/add.php" style="margin-bottom:10rem;">
                             <span class="material-icons-sharp">add</span>
                             <h3>Add User</h3>
                           </a>
