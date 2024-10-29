@@ -105,9 +105,9 @@ include('databases/connect.php');
                             <h3>analytics</h3>
                           </a>
 
-                          <a href="votes.php">
+                          <a href="update_sales.php">
                             <span class="material-icons-sharp">shopping_cart_checkout</span>
-                            <h3>Orders</h3>
+                            <h3>Payments</h3>
                           </a>
 
                           <a href="sales.php">
