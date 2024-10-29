@@ -68,8 +68,7 @@ $rows = mysqli_num_rows($feed);
 <!-- Hero Section -->
 <section class="hero">
     <div class="container">
-        <h1>Billing & Debt Tracking System</h1>
-        <p>Track meals, payments, and outstanding bills efficiently.</p>
+        <h1>WELCOME TO STEVE FLAVOUR RESTAURAANT</h1>
     </div>
 </section>
 

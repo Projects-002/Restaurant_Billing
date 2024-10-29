@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2024 at 11:41 PM
+-- Generation Time: Oct 28, 2024 at 04:01 PM
 -- Server version: 8.0.39
 -- PHP Version: 8.2.12
 
@@ -35,7 +35,7 @@ CREATE TABLE `admins` (
   `Phone` varchar(100) DEFAULT NULL,
   `Pass` varchar(255) DEFAULT NULL,
   `Reg_Date` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `admins`
@@ -53,10 +53,19 @@ INSERT INTO `admins` (`SN`, `First_Name`, `Last_Name`, `Email`, `Phone`, `Pass`,
 CREATE TABLE `products` (
   `SN` int NOT NULL,
   `P_Name` varchar(100) NOT NULL,
+  `Category` varchar(2000) NOT NULL,
   `Price` int NOT NULL,
   `P_Image` varchar(2000) NOT NULL,
   `Date_In` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`SN`, `P_Name`, `Category`, `Price`, `P_Image`, `Date_In`) VALUES
+(1, 'Pasta', 'Foods', 2000, 'https://i.postimg.cc/7ZqD3wMY/pexels-enginakyurt-1460872.jpg', '2024-10-24 12:26:01'),
+(2, 'Cheese', 'Foods', 399, 'https://i.postimg.cc/MKWTbCS5/pexels-alexy-almond-3758132.jpg', '2024-10-24 12:31:28');
 
 -- --------------------------------------------------------
 
@@ -66,12 +75,21 @@ CREATE TABLE `products` (
 
 CREATE TABLE `sales` (
   `SN` int NOT NULL,
-  `Username` varchar(100) NOT NULL,
+  `Reg_No` varchar(100) NOT NULL,
   `P_Name` varchar(200) NOT NULL,
+  `Category` varchar(2000) NOT NULL,
   `Price` int NOT NULL,
-  `Status` varchar(255) NOT NULL,
+  `P_Status` varchar(255) NOT NULL,
   `Sales_Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`SN`, `Reg_No`, `P_Name`, `Category`, `Price`, `P_Status`, `Sales_Date`) VALUES
+(1, 'DSE-01-8285/2023', 'Pasta', 'Food', 344, 'paid', '2024-10-24 21:52:26'),
+(2, 'Dse-02-666/2023', 'Burger', 'food', 3000, 'unpaid', '2024-10-25 11:03:57');
 
 -- --------------------------------------------------------
 
@@ -87,9 +105,9 @@ CREATE TABLE `users` (
   `Course` varchar(255) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Phone` varchar(20) NOT NULL,
-  `Pass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Pass` varchar(255)  NOT NULL,
   `Reg_Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `users`
@@ -149,13 +167,13 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `SN` int NOT NULL AUTO_INCREMENT;
+  MODIFY `SN` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `SN` int NOT NULL AUTO_INCREMENT;
+  MODIFY `SN` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

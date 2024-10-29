@@ -29,7 +29,8 @@ include('databases/connect.php');
                             <div class="top-hero">
                               <div class="logo">
                               </div>
-                              <h1>Zenith Stores</h1>
+                              <h1>Steve Flavour Restaurant
+                              </h1>
                           </div>
 
                        <!-- Top right -->
