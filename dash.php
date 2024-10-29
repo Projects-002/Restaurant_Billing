@@ -16,13 +16,7 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $reg = $row['Reg_No'];
 
-// SN
-//  Reg_No
-//  P_Name
-//  Category
-//  Price
-//  P_Status
-//  Sales_Date
+
 
 // Get sales Data
 $sales = "SELECT * FROM sales where Reg_No = '$reg'";
@@ -68,9 +62,19 @@ $rows = mysqli_num_rows($feed);
 <!-- Hero Section -->
 <section class="hero">
     <div class="container">
-        <h1>WELCOME TO STEVE FLAVOUR RESTAURAANT</h1>
+        <h1>Billing & Debt Tracking System</h1>
+        <p>Track meals, payments, and outstanding bills efficiently.</p>
     </div>
 </section>
+
+
+<div class="alert alert-success"   role="alert">
+  <div class="container">
+    <h1 class="text-center">LIPA NA MPESA</h1>
+    <p class="text-center"> <span class="fw-bold">PayBill:</span>  521533</p>
+    <p class="text-center"> <span class="fw-bold">Account No:</span>  Registration Number</p>
+  </div>
+</div>
 
 <style>
     .hero{
@@ -178,8 +182,9 @@ $rows = mysqli_num_rows($feed);
             <?php
                 $bill = "SELECT * FROM sales where Reg_No = '$reg'";
                 $back = mysqli_query($conn, $bill);
-                while($info = mysqli_fetch_assoc($back)){
-                 
+            
+        
+        while($info = mysqli_fetch_assoc($back)){  
                 $name = $info['P_Name'];
                 $p_price = $info['Price'];
                 $p_status = $info['P_Status'];
@@ -199,22 +204,41 @@ $rows = mysqli_num_rows($feed);
 
                  }
 
-                $total_debt = "SELECT SUM(Price) AS totalUnpaid FROM Sales Where P_Status = 'Unpaid'";
+                $total_debt = "SELECT  SUM(Price) AS totalUnpaid FROM Sales Where Reg_No = '$reg'";
                 $unpaid = mysqli_query($conn, $total_debt);
                 $debt_data = mysqli_fetch_assoc($unpaid);
 
-                $total_bill = $debt_data['totalUnpaid'];
 
+                $bill_1 = "SELECT * FROM sales where Reg_No = '$reg'";
+                $back_1 = mysqli_query($conn, $bill);
+                $info_1 = mysqli_fetch_assoc($back_1);
+                $state = $info_1['P_Status'];
+                
+                 if($state == null){
 
-                echo' 
+                        echo' 
+                            <tr>
+                            <td></td>
+                            <td></td>
+                            <td><b>Total Debt:</b></td>
+                            <td>00.0</td>
+                            </tr>
+                        ';
+
+                 }elseif($state == 'unpaid'){
+
+                    $total_bill = $debt_data['totalUnpaid'];
+                
+                    echo' 
                     <tr>
                     <td></td>
                     <td></td>
                     <td><b>Total Debt:</b></td>
                     <td>'.$total_bill.'</td>
                     </tr>
-                
                 ';
+              }
+                
             ?>
           </tbody>
         </table>
@@ -226,25 +250,54 @@ $rows = mysqli_num_rows($feed);
 <section class="section bg-light" id="payment">
     <div class="container">
         <h2 class="text-center mb-4">Make a Payment</h2>
-        <form id="paymentForm">
+
+        <?php
+          echo'
+            <form id="paymentForm" action="dash.php?uid='.$user.'" method="POST">
+          ';
+        ?>
             <div class="mb-3">
-                <label for="mealName" class="form-label">Meal Name</label>
-                <input type="text" class="form-control" id="mealName" placeholder="Enter the meal name" required>
+                <label for="mealName" class="form-label">Select Meal Name</label>
+                 <select name="meal" id="" class="form-control">
+                 <option selected>Select Meal</option>
+                  <?php
+                    $pay = "SELECT * FROM sales where Reg_No = '$reg'";
+                    $f_back = mysqli_query($conn, $pay);
+
+                    while($row = mysqli_fetch_assoc($f_back)){
+
+                      $meal =  $row['P_Name'];
+                      $status = $row['P_Status'];
+
+                      if($status = 'unpaid'){
+                            echo'
+                              <option value="'.$meal.'">'.$meal.'<option>
+                            ';
+
+                         }
+
+                    }
+
+
+
+                  ?>
+                 </select>
+
+
             </div>
             <div class="mb-3">
                 <label for="amount" class="form-label">Amount</label>
-                <input type="number" class="form-control" id="amount" placeholder="Enter the amount" required>
+                <input type="number" class="form-control" name="amount" id="amount" placeholder="Enter the amount" required>
             </div>
             <div class="mb-3">
                 <label for="paymentMethod" class="form-label">Payment Method</label>
-                <select class="form-select" id="paymentMethod" required>
-                    <option value="">Select a method</option>
-                    <option value="cash">Cash</option>
-                    <option value="credit">Credit Card</option>
-                    <option value="online">Online</option>
+                <select class="form-select" id="paymentMethod" name="payment" required>
+                    <option selected>Select a method</option>
+                    <option value="mpesa">Mpesa</option>
+                    <!-- <option value="credit">Credit Card</option> -->
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit Payment</button>
+            <button type="submit" class="btn btn-primary" name="pay">Submit Payment</button>
         </form>
     </div>
 </section>
@@ -260,12 +313,43 @@ $rows = mysqli_num_rows($feed);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- JavaScript for Form Handling (Basic) -->
-<script>
+<!-- <script>
     document.getElementById('paymentForm').addEventListener('submit', function(e) {
         e.preventDefault();
         alert('Payment submitted successfully!');
     });
-</script>
+</script> -->
 
 </body>
 </html>
+<?php
+
+if(isset($_POST['pay'])){
+
+    $meal_name = $_POST['meal'];
+    $amount = $_POST['amount'];
+    $p_method = $_POST['payment'];
+
+
+    // UPDATE table_name     
+    // SET column_name1 = new-value1,   
+    //         column_name2=new-value2, ...    
+    // [WHERE Clause]  
+
+    $Update = "UPDATE sales SET P_Status = 'paid' WHERE P_Name = '$meal_name'";
+    $feed = mysqli_query($conn, $Update);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+?>
+
