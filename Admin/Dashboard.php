@@ -121,9 +121,9 @@ include('databases/connect.php');
                           </a> -->
 
 
-                          <a href="#">
-                            <span class="material-icons-sharp">person_search</span>
-                            <h3>Search Users</h3>
+                          <a href="table_sales.php">
+                            <span class="material-icons-sharp">receipt_long</span>
+                            <h3>View Receipt</h3>
                           </a>
 
                           <a href="#">
