@@ -35,8 +35,7 @@ CREATE TABLE `admins` (
   `Phone` varchar(100) DEFAULT NULL,
   `Pass` varchar(255) DEFAULT NULL,
   `Reg_Date` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+);
 --
 -- Dumping data for table `admins`
 --
@@ -57,9 +56,7 @@ CREATE TABLE `products` (
   `Price` int NOT NULL,
   `P_Image` varchar(2000) NOT NULL,
   `Date_In` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
+);
 -- Dumping data for table `products`
 --
 
@@ -80,7 +77,7 @@ CREATE TABLE `sales` (
   `Price` int NOT NULL,
   `Status` varchar(255) NOT NULL,
   `Sales_Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -96,10 +93,9 @@ CREATE TABLE `users` (
   `Course` varchar(255) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Phone` varchar(20) NOT NULL,
-  `Pass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Pass` varchar(255) CHARACTER SET NOT NULL,
   `Reg_Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+);
 --
 -- Dumping data for table `users`
 --

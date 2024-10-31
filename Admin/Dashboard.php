@@ -13,7 +13,7 @@ include('databases/connect.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zenith Stores: Admin Panel</title>
+    <title>LOCAL STUDENT RESTAURANT</title>
     <link rel="stylesheet" href="Assets/Css/dashboard.css">
     <link rel="stylesheet" href="Assets/Css/analytics.css">
     <!-- material icon -->
@@ -32,7 +32,7 @@ include('databases/connect.php');
                               <div class="logo logo-image">
                               <!-- The logo is here -->
                               </div>
-                              <h1>Steve Flavour Restaurant</h1>
+                              <h1>LOCAL STUDENT RESTAURANT</h1>
                           </div>
 
                        <!-- Top right -->

@@ -62,7 +62,8 @@ $rows = mysqli_num_rows($feed);
 <!-- Hero Section -->
 <section class="hero">
     <div class="container">
-        <h1>STUDENT LOCAL RESTAURANT</h1>
+        <h3>Welcome To</h3>
+        <h1>LOCAL STUDENT RESTAURANT</h1>
         <p>Track meals, payments, and outstanding bills efficiently.</p>
     </div>
 </section>
@@ -73,27 +74,27 @@ $rows = mysqli_num_rows($feed);
 
 
 //   $get_debt = "SELECT DATEDIFF('2024-11-06 09:34:21', Sales_Date) as Due from Sales Where Reg_No = '$reg'";
-  $get_debt = "SELECT DATEDIFF(now(), Sales_Date) as Due from Sales Where Reg_No = '$reg'";
-  $feed_back = mysqli_query($conn,$get_debt);
-  $row_1 = mysqli_fetch_assoc($feed_back);
-  $bal = $row_1['Due'];
+//   $get_debt = "SELECT DATEDIFF(now(), Sales_Date) as Due from Sales Where Reg_No = '$reg'";
+//   $feed_back = mysqli_query($conn,$get_debt);
+//   $row_1 = mysqli_fetch_assoc($feed_back);
+// //   $bal = $row_1['Due'];
   
-  $get_status = "SELECT * FROM sales where Reg_No = '$reg'";
-  $q_result = mysqli_query($conn,$get_status);
-  $row_2 = mysqli_fetch_assoc($q_result);
+//   $get_status = "SELECT * FROM sales where Reg_No = '$reg'";
+//   $q_result = mysqli_query($conn,$get_status);
+//   $row_2 = mysqli_fetch_assoc($q_result);
 
-  $p_state = $row_2['P_Status'];
+//   $p_state = $row_2['P_Status'];
 
-  if($p_state = 'unpaid' && $bal >3){
+//   if($p_state = 'unpaid' && $bal >3){
     
-    echo'
-    <div class="alert alert-danger"   role="alert">
-       <p>Some of your Meals are Due kindly repay them</p>
-  </div>
-  ';
+//     echo'
+//     <div class="alert alert-danger"   role="alert">
+//        <p>Some of your Meals are Due kindly repay them</p>
+//   </div>
+//   ';
 
 
-  }
+//   }
 
 ?>
 
@@ -110,14 +111,15 @@ $rows = mysqli_num_rows($feed);
     .hero{
         position: relative;
         background:url('https://i.postimg.cc/GpFNmcn5/gettyimages-1457889029-612x612.jpg');
+        padding-bottom:10rem;
      }
 
      .hero .container{
         position: absolute;
         z-index: 3;
-        top: 1rem;
-        left: 0;
-        bottom:1rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
      }
 
 
