@@ -1,3 +1,7 @@
+<?php
+include('Databases/connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="antialiased">
 
@@ -5,7 +9,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>DataTables </title>
+	<title>Sales Table</title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
@@ -132,34 +136,67 @@
 			<table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
 				<thead>
 					<tr>
-						<th data-priority="1">Name</th>
-						<th data-priority="2">Position</th>
-						<th data-priority="3">Office</th>
-						<th data-priority="4">Age</th>
-						<th data-priority="5">Start date</th>
+						<th data-priority="1">First Name</th>
+						<th data-priority="2">Last Name</th>
+						<th data-priority="3">Registration</th>
+						<th data-priority="4">Product</th>
+						<th data-priority="5">Price</th>
+						<th data-priority="5">Sales Date</th>
 						<th data-priority="6">Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Tiger Nixon</td>
-						<td>System Architect</td>
-						<td>Edinburgh</td>
-						<td>61</td>
-						<td>2011/04/25</td>
-						<td><button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">View Receipt</button></td>
-					</tr>
 
+				<?php
+
+
+
+									// SQL query
+									$sql = "SELECT users.First_Name, users.Last_Name, sales.* 
+											FROM users 
+											RIGHT JOIN sales ON sales.Reg_No = users.Reg_No;";
+
+									// Execute query
+									$result = $conn->query($sql);
+
+									if ($result->num_rows > 0) {
+										// Fetch and display results
+										while($row = $result->fetch_assoc()) {
+											$f_name =  $row["First_Name"];
+											$l_name = $row["Last_Name"];
+											$reg = $row["Reg_No"];
+											$id = $row["SN"];
+											$p_name = $row["P_Name"];
+											$category = $row["Category"];
+											$price = $row["Price"];
+											$state = $row["P_Status"];
+											$sales_date = $row["Sales_Date"];
+
+                                      echo'
+									  		<tr>
+												<td>'.$f_name.'</td>
+												<td>'.$l_name.'</td>
+												<td>'.$reg.'</td>
+												<td>'.$p_name.'</td>
+												<td>'.$price.'</td>
+												<td>'.$sales_date.'</td>
+											<td><a href="receipt.php?user='.$id.'"><button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">View Receipt</button></a></td>
+											</tr>
+									 
+									 
+									  ';
+
+										}
+									} else {
+										echo "No results found.";
+									}
+
+									// Close connection
+									$conn->close();
+
+                 ?>
 					<!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
 
-					<tr>
-						<td>Donna Snider</td>
-						<td>Customer Support</td>
-						<td>New York</td>
-						<td>27</td>
-						<td>2011/01/25</td>
-						<td><button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">View Receipt</button></td>
-					</tr>
 				</tbody>
 
 			</table>
