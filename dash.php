@@ -99,13 +99,98 @@ $rows = mysqli_num_rows($feed);
 ?>
 
 
-<div class="alert alert-success"   role="alert">
+
+
+<div class="alert alert-success d-flex "   role="alert">  
+    
+
+   <div class="container  d-flex gap-0.5">
+           
+       <?php
+
+
+      $getp = "SELECT * FROM products";
+      $result = mysqli_query($conn,$getp);
+
+      while($row = mysqli_fetch_assoc($result)){
+
+
+       $image = $row['P_Image'];
+       $p_name = $row['P_Name'];
+
+
+      echo'
+     
+          <div class="col">
+                    <img src="'.$image.'" class="img">
+                    <div class="title">
+                       '.$p_name.'
+                    </div>   
+            </div>
+     
+        ';
+
+      }
+
+
+
+
+
+
+
+
+//  SN
+//  P_Name
+//  Category
+//  Price
+//  P_Image
+//  Date_In
+
+  
+
+
+
+        ?>
+
+
+    </div>
+
+
+
+    <style>
+
+      .img{
+        width: 10rem;
+        background:#111;
+        border-radius:50%;
+        height:10rem;
+        border:2px solid green;
+      }
+
+
+    </style>
+
+
+
+
+
+</div>
+
+
+
+<div class="alert alert-light">
+
   <div class="container">
     <h1 class="text-center">LIPA NA MPESA</h1>
     <p class="text-center"> <span class="fw-bold">PayBill:</span>  521533</p>
     <p class="text-center"> <span class="fw-bold">Account No:</span>  Registration Number</p>
   </div>
+
 </div>
+
+
+
+
 
 <style>
     .hero{
