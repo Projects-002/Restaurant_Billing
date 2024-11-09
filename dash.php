@@ -160,10 +160,10 @@ $rows = mysqli_num_rows($feed);
     <style>
 
       .img{
-        width: 10rem;
+        width: 7rem;
         background:#111;
         border-radius:50%;
-        height:10rem;
+        height:7rem;
         border:2px solid green;
       }
 
