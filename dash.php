@@ -134,11 +134,6 @@ $rows = mysqli_num_rows($feed);
 
 
 
-
-
-
-
-
 //  SN
 //  P_Name
 //  Category
@@ -147,8 +142,6 @@ $rows = mysqli_num_rows($feed);
 //  Date_In
 
   
-
-
 
         ?>
 
