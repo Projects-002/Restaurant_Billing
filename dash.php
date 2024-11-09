@@ -101,9 +101,9 @@ $rows = mysqli_num_rows($feed);
 
 
 
-<div class="alert alert-success d-flex "   role="alert">  
+<div class="alert alert-success d-flex flex-column"   role="alert">  
     
-
+   <h1 class="text-center my-4">Available Meals</h1>
    <div class="container  d-flex gap-0.5">
            
        <?php
