@@ -69,7 +69,7 @@
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
+                    <a href="backend/register.php" class="btn btn-primary py-2 px-4">Get Started</a>
                 </div>
             </nav>
 
@@ -79,7 +79,7 @@
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="display-3 text-white animated slideInLeft">Enjoy Our<br>Delicious Meal</h1>
                             <p class="text-white animated slideInLeft mb-4 pb-2">Welcome to a place where fresh ingredients, delicious recipes, and a cozy atmosphere come together. Every dish is made with care to give you a warm, unforgettable dining experience.</p>
-                            <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A Table</a>
+                            <a href="backend/index.php" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Visit DashBoard</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-end overflow-hidden">
                             <img class="img-fluid" src="img/hero.png" alt="">
@@ -213,7 +213,7 @@
                                 <i class="fa fa-hamburger fa-2x text-primary"></i>
                                 <div class="ps-3">
                                     <small class="text-body">Special</small>
-                                    <h6 class="mt-n1 mb-0">Launch</h6>
+                                    <h6 class="mt-n1 mb-0">Lunch</h6>
                                 </div>
                             </a>
                         </li>

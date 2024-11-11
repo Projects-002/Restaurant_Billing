@@ -97,7 +97,7 @@ if(isset($_POST['submit'])){
 <!-- PHP END -->
 
 <div class="login-container">
-    <h2 class="text-center">User</h2>
+    <h2 class="text-center">User Login</h2>
   <p>Login as <a href="admin/index.php">Admin</a></p>  
     <form action='index.php' method='POST'>
         <div class="mb-3">
@@ -115,7 +115,7 @@ if(isset($_POST['submit'])){
         <button type="submit" name='submit' class="btn btn-primary">Login</button>
     </form>
 
-    <p>Don't have account yet? <a href="register.php">Register</a></p>
+    <p class="mt-5">Don't have account yet? <a href="register.php">Register</a></p>
 </div>
 
 <!-- Bootstrap JS -->
