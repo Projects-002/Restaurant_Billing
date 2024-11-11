@@ -100,9 +100,9 @@ include('databases/connect.php');
                             <span class="message-count">26</span>
                           </a>
 
-                          <a href="#">
-                            <span class="material-icons-sharp">analytics</span>
-                            <h3>analytics</h3>
+                          <a href="notify.php">
+                            <span class="material-icons-sharp">notifications_active</span>
+                            <h3>Notifications</h3>
                           </a>
 
                           <a href="update_sales.php">
