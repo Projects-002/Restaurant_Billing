@@ -8,9 +8,6 @@ if(!isset($_SESSION['user'])){
 
 include('../databases/connect.php');
 
-
-
-
 if(isset($_POST['add'])){
 
   $First_name = $_POST['f-name'];
@@ -21,14 +18,6 @@ if(isset($_POST['add'])){
   $course = $_POST['course'];
   $User_pass = $_POST['pass'];
   
-
-//  First_Name
-//  Last_Name
-//  Reg_No
-//  Course
-//  Email
-//  Phone
-//  Pass
 
   $sql = "INSERT INTO users (First_Name,Last_Name,  Reg_No,  Course, Email, Phone, Pass)
   values ('$First_name','$Last_name','$reg_no','$course', '$email','$phone', '$User_pass')";

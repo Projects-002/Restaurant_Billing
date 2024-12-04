@@ -219,13 +219,13 @@ include('databases/connect.php');
 
                     <!--Total products start-->
                     <?php
-                        $sql = "SELECT * FROM products";
+                        $sql = "SELECT SUM(Price) as P_tot FROM products";
                         $result = mysqli_query($conn, $sql);
-                        $total_Products = mysqli_num_rows($result);
-                    
+                        $total_Products = mysqli_fetch_assoc($result);
+                        $p_total = $total_Products['P_tot'];
 
                         echo'
-                                <h1>'.$total_Products.'</h1>
+                                <h1>'.$p_total.' /=</h1>
                         
                           ';
                         ?>
@@ -244,7 +244,7 @@ include('databases/connect.php');
                                   $result = mysqli_query($conn, $sql);
                                   $total_products = mysqli_num_rows($result);
                               
-                                  $min_stock = 50;
+                                  $min_stock = 50000;
 
                                   $Total_products_percentage = ceil((($total_products/$min_stock) * 100)) ;
 
@@ -269,17 +269,18 @@ include('databases/connect.php');
                      <div class="left">
                       <h3>Total Sales</h3>
                       
-            <?php
-              $sql = "SELECT * FROM sales";
-              $result = mysqli_query($conn, $sql);
-              $total_sales = mysqli_num_rows($result);
-           
-
-               echo'
-                       <h1>'.$total_sales.'</h1>
-               
-                 ';
-               ?>
+                           <?php
+                            $sql = "SELECT SUM(Price)  as Total_Price FROM sales";
+                            $result = mysqli_query($conn, $sql);
+                            $total_sales = mysqli_fetch_assoc($result);
+                            $sum = $total_sales['Total_Price'];
+                        
+      
+                            echo'
+                                    <h1>'.$sum.' /=</h1>
+                            
+                              ';
+                         ?>
                      </div>
                      <div class="progress">
                        <svg>

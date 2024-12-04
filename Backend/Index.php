@@ -41,24 +41,18 @@
 <body>
 
 
-<!-- PHP START -->
-<?php
+ <!-- PHP START -->
+        <?php
 
-include ('database/db.php');
+         include ('database/db.php');
 
-if(isset($_POST['submit'])){
-
-                    
-
+         if(isset($_POST['submit'])){
+      
                         $email = $_POST['email'];
                         $pass = $_POST['pass'];
 
-// Code with HOPE DEVELOPERS
-
-
                         $sql = "SELECT * FROM users where Email = '$email'";
                         $result =  mysqli_query($conn, $sql);
-
 
                         $row = mysqli_num_rows($result);
 
@@ -89,10 +83,9 @@ if(isset($_POST['submit'])){
 
                         }
 
-
-}
+               }
  
-?>
+           ?>
 
 <!-- PHP END -->
 
